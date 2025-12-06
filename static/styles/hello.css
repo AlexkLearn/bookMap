@@ -1,0 +1,130 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F44336 0%, #6e3d8d 100%);
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3.125rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1.25rem;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #eaf86a;
+}
+
+main {
+  flex: 1;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.875rem;
+  padding: 5rem 3.125rem;
+  z-index: 1;
+  position: relative;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: .94rem;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-0.625rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  background: #ffffff49;
+}
+
+.card-image {
+  width: 15.625rem;
+  height: 9.375rem;
+  margin: 0 auto .94rem auto;
+  border-radius: .625rem;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+footer {
+  text-align: center;
+  padding: .5rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+}
+
+.socials {
+  margin: 0;
+}
+
+.socials img {
+  width: 24px;
+  margin: .75rem;
+}
+
+.socials a {
+  text-decoration: none;
+}
+
+@media(max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  .cards-container {
+    padding: 3.125rem 1.25rem;
+  }
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}

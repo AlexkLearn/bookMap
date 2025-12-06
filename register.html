@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM</title>
+  <link rel="stylesheet" href="/static/styles/general.css">
+  <link rel="stylesheet" href="/static/styles/forms.css">
+  <link rel="stylesheet" href="/static/styles/bootstrap/css/bootstrap.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="d-flex justify-content-between align-items-center mb-4 text-white">
+    <h2 class="m-0">
+      <a href="index.html">bookMap</a>
+    </h2>
+    <h3 class="m-0 text-center flex-grow-1">Register</h3>
+  </header>
+
+
+  <!-- Centered Form Wrapper -->
+  <div class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <form class="mx-auto w-100 p-4 rounded-4 shadow custom-form-bg" style="max-width: 600px;">
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white" for="first_name">First Name</label>
+          <input type="text" class="form-control custom-input" required name="first_name" id="first_name"/>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white" for="second_name">Second Name</label>
+          <input type="text" class="form-control custom-input" required name="second_name" id="second_name"/>
+        </div>
+      </div>
+
+
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white" for="username">Username</label>
+          <input type="text" class="form-control custom-input" required name="username" id="username"/>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white" for="email">Email</label>
+          <input type="email" class="form-control custom-input" name="email" id="email" required/>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white" for="pas-input">Password</label>
+          <div class="passw" >
+            <div id="passw">
+              <input type="password" class="form-control custom-input" required id="pas-input" name="password"/>
+              <span id="pas-display">
+                <img src="/static/icons/show_password.png" alt="show password" id="toggle-img" height="24px" width="24px">
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label text-white">Confirm Password</label>
+          <div class="passw" >
+            <div id="passw">
+              <input type="password" class="form-control custom-input" required id="input-pas" name="confirm_password" />
+              <span id="display-pas">
+                <img src="/static/icons/show_password.png" alt="show password" id="img-toggle" height="24px" width="24px">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn w-100 mb-3" id="custom-register-btn">
+        Register
+      </button>
+
+
+      <p class="text-center text-white">
+        Already have an account?
+        <a href="login.html" class="text-decoration-none custom-link">
+          Login
+        </a>
+      </p>
+
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/scripts/constants.js"></script>
+  <script src="/static/scripts/forms.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bookMap Dashboard</title>
+
+  <link rel="stylesheet" href="/static/styles/dashboard.css">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">bookMap</div>
+    <div id="section">All Books</div>
+    <div class="avatar" id="avatar">U
+      <div class="dropdown">
+        <p>Profile</p>
+        <p>Settings</p>
+        <hr>
+        <p>Organization</p>
+        <hr>
+        <p>Logout</p>
+      </div>
+    </div>
+  </header>
+
+  <aside>
+    <div class="icon" id="all-icon">
+      <img src="/static/icons/find_book.png" alt="All Books">
+      <p>All Books</p>
+    </div>
+    <div class="icon" id="locator">
+      <img src="/static/icons/book_location.png" alt="Book Location">
+      <p>Book Location</p>
+    </div>
+    <div class="icon" id="borrowed-icon">
+      <img src="/static/icons/borrow_book.png" alt="Borrowed Books">
+      <p>Borrowed Books</p>
+    </div>
+    <div class="icon" id="damaged-icon">
+      <img src="/static/icons/damaged_book.png" alt="Damaged Books">
+      <p>Damaged Books</p>
+    </div>
+    <!-- <div class="icon" id="co-icon">
+      <img src="https://via.placeholder.com/30" alt="Checkout">
+      <p>Checkout</p>
+    </div> -->
+    <div class="home">
+      <p><a href="hello.html">Home</a></p>
+    </div>
+  </aside>
+
+  <main>
+    
+    <div class="filter" id="filterBar">
+      <div class="options">
+        <div>
+          <label><input type="checkbox" name="filter" value="name"> Name</label>
+          <label><input type="checkbox" name="filter" value="author"> Author</label>
+          <label><input type="checkbox" name="filter" value="genre"> Genre</label>
+        </div>
+        <div>
+          <p>Category:</p>
+          <label><input type="radio" name="category" value="educational"> Educational</label>
+          <label><input type="radio" name="category" value="fictional"> Fictional</label>
+          <label><input type="radio" name="category" value="informative"> Informative</label>
+        </div>
+      </div>
+      <div>
+        <input type="text"
+          placeholder="Search books..."
+          id="searchInput"
+          class="search-input" name="search"
+        >
+        <input type="submit" value="Search" class="search-btn">
+      </div>
+      <div>🔃</div>
+    </div>
+
+    <div class="table-container">
+      <div class="all-books" id="books">
+        <table>
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Genre</th>
+              <th>Total Copies</th>
+              <th>Available Copies</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘</td><td>Sample Book</td><td>Author A</td><td>Fiction</td><td>Fictional</td><td>5</td><td>3</td><td>Edit</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="book-location" id="location">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Section</th>
+              <th>Shelf</th>
+              <th>Row</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sample Book</td><td>Educational</td><td>C</td><td>C9</td><td>3</td><td>Edit</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="borrowed-books" id="borrowed">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Borrower Name</th>
+              <th>Borrow Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sample Book</td><td>Fiction</td><td>John Doe</td><td>06/12/25</td><td>13/12/25</td><td>Active</td><td>Edit</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="damaged-books" id="damaged">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Reported By</th>
+              <th>Report Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sample Book</td><td>Fiction</td><td>Fictional</td><td>John Smith</td><td>02/12/25</td><td>Pending</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- <div class="pagination">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+    </div> -->
+
+
+
+  </main>
+
+  <script src="/static/scripts/index.js"></script>
+
+</body>
+</html>

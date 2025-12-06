@@ -1,0 +1,30 @@
+:root {
+  --bg-gradient: linear-gradient(135deg,
+      rgba(244, 67, 54, 0.85) 0%,
+      rgba(110, 61, 141, 0.85) 100%);
+  --bg-gradient-normal: linear-gradient(135deg, #F44336 0%, #6e3d8d 100%);
+  --common-medium-spacing: .75rem;
+  --common-small-spacing: .25rem;
+  --common-xsm-spacing: .15rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 a, h2 a,h3 a,
+h4 a, h5 a, h6 a {
+  color: white;
+  text-decoration: none;
+}
+
+header h2 {
+  margin: 0 0 0 .5rem;
+}
