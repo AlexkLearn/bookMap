@@ -52,30 +52,57 @@
   </aside>
 
   <main>
+
+    <div class="crud" id="crud">
+      <div>
+        <button id="add-btn">
+          <a href="add_book.html">Add&nbsp;Book</a>
+        </button>
+
+        <button id="brw-btn"
+         onclick="
+         location.href='/borrow.html'
+        ">
+          Lend&nbsp;Book
+        </button>
+
+        <button id="damg-btn"
+         onclick="
+         location.href='/damaged.html'
+        ">
+          Report&nbsp;Damage
+        </button>
+      </div>
+    </div>
     
     <div class="filter" id="filterBar">
-      <div class="options">
-        <div>
-          <label><input type="checkbox" name="filter" value="name"> Name</label>
-          <label><input type="checkbox" name="filter" value="author"> Author</label>
-          <label><input type="checkbox" name="filter" value="genre"> Genre</label>
+      <!-- 
+        <div class="options">
+          <div>
+            <label><input type="checkbox" name="filter" value="name"> Name</label>
+            <label><input type="checkbox" name="filter" value="author"> Author</label>
+            <label><input type="checkbox" name="filter" value="genre"> Genre</label>
+          </div>
+          <div>
+            <p>Category:</p>
+            <label><input type="radio" name="category" value="educational"> Educational</label>
+            <label><input type="radio" name="category" value="fictional"> Fictional</label>
+            <label><input type="radio" name="category" value="informative"> Informative</label>
+          </div>
         </div>
-        <div>
-          <p>Category:</p>
-          <label><input type="radio" name="category" value="educational"> Educational</label>
-          <label><input type="radio" name="category" value="fictional"> Fictional</label>
-          <label><input type="radio" name="category" value="informative"> Informative</label>
-        </div>
-      </div>
-      <div>
+      -->
+
+      <div></div> <!-- for alignment-->
+
+      <div id="search-bar">
         <input type="text"
           placeholder="Search books..."
           id="searchInput"
           class="search-input" name="search"
         >
-        <input type="submit" value="Search" class="search-btn">
+        <input type="submit" value="search" class="search-btn">
       </div>
-      <div>🔃</div>
+      <div id="sort">🔃</div>
     </div>
 
     <div class="table-container">

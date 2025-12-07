@@ -1,0 +1,60 @@
+body {
+  background: linear-gradient(135deg, #F44336 0%, #6e3d8d 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.form-wrapper {
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  color: #ffe6ff;
+}
+
+.form-label {
+  color: #fcebff;
+  font-weight: 500;
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: white;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid #fff;
+  color: white;
+  box-shadow: none;
+}
+
+/* Buttons */
+.cancel-btn {
+  border: 2px solid #ffffff88;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.add-btn {
+  color: #6e3d8d;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+#btns .add-btn:hover {
+  background-color: #cd101052;
+  color: white;
+  border: none;
+}

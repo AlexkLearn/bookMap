@@ -1,0 +1,81 @@
+/* Background from LMS theme */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #F44336 0%, #6e3d8d 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Page container */
+.damage-container {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Card styling */
+.damage-card {
+  max-width: 520px;
+  margin: auto;
+  background: #ffffffdd;
+  border-radius: 18px;
+  backdrop-filter: blur(7px);
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Heading */
+.damage-card h1 {
+  font-weight: 700;
+  color: #6e3d8d;
+}
+
+/* Inputs + Select + Textarea */
+.form-control,
+.form-select,
+textarea {
+  border-radius: 10px;
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: transparent;
+  border: 2px solid #F44336;
+  color: #F44336;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: .3s ease;
+}
+
+.cancel-btn:hover {
+  background: #F44336;
+  color: #fff;
+}
+
+/* Submit Button */
+.submit-btn {
+  background: #6e3d8d;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: .3s ease;
+}
+
+.submit-btn:hover {
+  background: #512969;
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

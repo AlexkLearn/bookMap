@@ -1,0 +1,78 @@
+/* Background from LMS theme */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #F44336 0%, #6e3d8d 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Form Container */
+.borrow-container {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Card Styling */
+.borrow-card {
+  max-width: 480px;
+  margin: auto;
+  background: #ffffffdd;
+  border-radius: 18px;
+  animation: slideUp 0.6s ease-out;
+  backdrop-filter: blur(6px);
+}
+
+/* Title */
+.borrow-card h1 {
+  font-weight: 700;
+  color: #6e3d8d;
+}
+
+/* Buttons */
+.cancel-btn {
+  background: transparent;
+  border: 2px solid #F44336;
+  color: #F44336;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: .3s ease;
+}
+
+.cancel-btn:hover {
+  background: #F44336;
+  color: #fff;
+}
+
+.add-btn {
+  background: #6e3d8d;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: .3s ease;
+}
+
+.add-btn:hover {
+  background: #512969;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+}
+
+/* Smooth intro animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
