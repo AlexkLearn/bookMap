@@ -19,8 +19,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = "library.Librarian" # Registering custom user
 
 # For the page that require logging in
-LOGIN_URL = 'login/'
-LOGIN_REDIRECT_URL = 'dashboard/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 
 # Application definition
