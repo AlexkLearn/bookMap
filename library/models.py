@@ -16,7 +16,7 @@ class Librarian(AbstractUser):
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default="librarian")
     
     def __str__( self ):
-        return f"Username: {self.username} | Role:{self.role}"
+        return f"Username: {self.username} | Role: {self.role}"
     
 
 
