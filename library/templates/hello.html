@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library Management System</title>
-  <link rel="stylesheet" href="/static/styles/general.css">
-  <link rel="stylesheet" href="/static/styles/hello.css">
+
+  {% load static %}
+
+  <link rel="stylesheet" href={% static "/styles/general.css" %}>
+  <link rel="stylesheet" href={% static "/styles/hello.css" %}>
 </head>
 <body>
   <!-- Particle Background -->
@@ -14,8 +17,8 @@
   <header>
     <h1>bookMap</h1>
     <nav>
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
+      <a href={% url 'login' %}>Login</a>
+      <a href={% url 'register' %}>Register</a>
     </nav>
   </header>
 
@@ -23,7 +26,7 @@
     <section class="cards-container">
       <div class="card">
         <div class="card-image">
-          <img src="/static/assets/find_book.png" alt="Accessibility">
+          <img src={% static "/assets/find_book.png" %} alt="Accessibility">
         </div>
         <h2>Accessibility</h2>
         <p>Instant access to book details, availability, and locations — no guesswork, no delays.</p>
@@ -31,7 +34,7 @@
 
       <div class="card">
         <div class="card-image">
-          <img src="/static/assets/organized_books.png" alt="Organization">
+          <img src={% static "/assets/organized_books.png" %} alt="Organization">
         </div>
         <h2>Organization</h2>
         <p>A neatly structured system that keeps every book exactly where it should be.</p>
@@ -39,7 +42,7 @@
 
       <div class="card">
         <div class="card-image">
-          <img src="/static/assets/library_chaos.png" alt="Chaos Management">
+          <img src={% static "/assets/library_chaos.png" %} alt="Chaos Management">
         </div>
         <h2>Chaos Management</h2>
         <p>Eliminates confusion by streamlining book tracking, borrowing, and updates.</p>
@@ -47,7 +50,7 @@
 
       <div class="card">
         <div class="card-image">
-          <img src="/static/assets/overall_user_exp.png" alt="Visitor Experience">
+          <img src={% static "/assets/overall_user_exp.png" %} alt="Visitor Experience">
         </div>
         <h2>Visitor Experience</h2>
         <p>Faster service, easy navigation, and a smoother, stress-free library visit.</p>
@@ -63,15 +66,15 @@
 
     <div class="socials">
       <a href="mailto:kimaria117@gmail.com">
-        <img src="/static/icons/email_icon.png" alt="Email Us">
+        <img src={% static "/icons/email_icon.png" %} alt="Email Us">
       </a>
       <a href="tel:+254790096639">
-        <img src="/static/icons/call.png" alt="Call Us">
+        <img src={% static "/icons/call.png" %} alt="Call Us">
       </a>
     </div>
 
   </footer>
 
-  <script src="/static/scripts/hello.js"></script>
+  <script src={% static "/scripts/hello.js" %}></script>
 </body>
 </html>

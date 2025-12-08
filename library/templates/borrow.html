@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Checkout</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static '/styles/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/styles/borrow_book.css' %}">
+</head>
+<body>
+
+  <div class="borrow-container">
+    <div class="borrow-card shadow-lg p-4">
+
+      <h1 class="text-center mb-4">Book Checkout</h1>
+
+      <form method="POST">
+
+        {% csrf_token %}
+
+        <p id="err-msg" style="
+          display: none;
+          color: #eee;
+          background-color: tomato;
+          border-radius: .25rem;
+          padding: .25rem;
+          margin: .12rem;
+          text-align: center
+        ">An error occured</P>
+        <!-- Book Title -->
+        <div class="mb-3">
+          <label class="form-label">Book Title</label>
+          <input type="text" class="form-control"
+            placeholder="Enter book title"
+            name="title" required
+          >
+        </div>
+
+        <!-- Borrower Name -->
+        <div class="mb-3">
+          <label class="form-label">Borrower Name</label>
+          <input type="text" class="form-control"
+            placeholder="Enter borrower name" 
+            name="borrower" required
+          >
+        </div>
+
+        <!-- Duration -->
+        <div class="mb-3">
+          <label class="form-label">Duration (Days)</label>
+          <input type="number" class="form-control"
+            placeholder="e.g. 14"
+            min="1" name="duration" value="7"
+          >
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <a href={% url 'dashboard' %} class="btn cancel-btn px-4">Cancel</a>
+          <button class="btn add-btn px-4" type="submit">Borrow</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+</body>
+</html>

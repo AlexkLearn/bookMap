@@ -27,3 +27,25 @@ const togglePassword = (el, image, input) => {
 
 togglePassword(span, img, passwordInput);
 togglePassword(span2, img2, passwordInput2);
+
+
+// Check Password match
+const register = document.getElementById('custom-register-btn')
+const errorP = document.getElementById('reg-err-msg')
+let errorMsg = errorP.innerText
+
+register.onclick = (e) => {
+  e.preventDefault()
+  let password = passwordInput.value
+  let repeatedPassword = passwordInput2.value
+  
+  console.log(`Password: ${password}, Repeated: ${repeatedPassword}`)
+
+  if (password !== repeatedPassword) {
+    errorMsg = "Passwords do not match"
+    return;
+  }
+
+  register.closest('form').submit();
+
+}

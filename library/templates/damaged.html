@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Damage</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static '/styles/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/styles/damaged_books.css' %}">
+</head>
+<body>
+
+  <div class="damage-container">
+    <div class="damage-card shadow-lg p-4">
+
+      <h1 class="text-center mb-4">Report Damage</h1>
+
+      <form method="POST">
+
+        {% csrf_token %}
+
+        <p id="err-msg" style="
+          color: #eee;
+          display: none;
+          background-color: tomato;
+          border-radius: .25rem;
+          padding: .25rem;
+          margin: .12rem;
+          text-align: center
+        ">An error occured</P>
+
+        <!-- Book Title -->
+        <div class="mb-3">
+          <label class="form-label">Book Title</label>
+          <input type="text" class="form-control"
+            placeholder="Enter book title"
+            name="title" required
+          >
+        </div>
+
+        <!-- Reported By -->
+        <div class="mb-3">
+          <label class="form-label">Reported By</label>
+          <input type="text" class="form-control"
+            placeholder="Name of reporter"
+            name="reporter" required
+          >
+        </div>
+
+        <!-- Report Date -->
+        <!--
+        <div class="mb-3">
+          <label class="form-label">Report Date</label>
+          <input type="date" class="form-control" name="date" required>
+        </div>
+        -->
+
+        <!-- Damage Type -->
+        <div class="mb-3">
+          <label class="form-label">Damage Type</label>
+          <select class="form-select" name="damage" required>
+            <option value="" selected disabled>Select damage type</option>
+            <option value="water_damage">Water Damage</option>
+            <option value="torn_pages">Torn Pages</option>
+            <option value="missing_pages">Missing Pages</option>
+            <option value="cover_damage">Cover Damage</option>
+            <option value="stains">Stains</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" rows="3" placeholder="Describe the damage..." name="description" required></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+          <a href={% url 'dashboard' %} class="btn cancel-btn px-4">Cancel</a>
+          <button class="btn submit-btn px-4" type="submit">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>

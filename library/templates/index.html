@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bookMap Dashboard</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" href={% static "/styles/dashboard.css" %}>
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">bookMap</div>
+    <div id="section">All Books</div>
+    <div class="avatar" id="avatar">
+      <span>{{ initials }}</span>
+      <div class="dropdown">
+        <p>Profile</p>
+        <p>Settings</p>
+        <hr>
+        <p>Organization</p>
+        <hr>
+        <p>
+          <a href={% url 'logout' %} style="text-decoration: none; color: inherit;">Logout</a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <aside>
+    <div class="icon" id="all-icon">
+      <img src={% static "/icons/find_book.png" %} alt="All Books">
+      <p>All Books</p>
+    </div>
+    <div class="icon" id="locator">
+      <img src={% static "/icons/book_location.png" %} alt="Book Location">
+      <p>Book Location</p>
+    </div>
+    <div class="icon" id="borrowed-icon">
+      <img src={% static "/icons/borrow_book.png" %} alt="Borrowed Books">
+      <p>Borrowed Books</p>
+    </div>
+    <div class="icon" id="damaged-icon">
+      <img src={% static "/icons/damaged_book.png" %} alt="Damaged Books">
+      <p>Damaged Books</p>
+    </div>
+    <!-- <div class="icon" id="co-icon">
+      <img src="https://via.placeholder.com/30" alt="Checkout">
+      <p>Checkout</p>
+    </div> -->
+    <div class="home">
+      <p><a href={% url 'home' %}>Home</a></p>
+    </div>
+  </aside>
+
+  <main>
+
+    <div class="crud" id="crud">
+      <div>
+        <button id="add-btn">
+          <a href={% url 'add_book' %}>Add&nbsp;Book</a>
+        </button>
+
+        <button id="brw-btn"
+         onclick="
+         location.href={% url 'borrow_book' %}
+        ">
+          Lend&nbsp;Book
+        </button>
+
+        <button id="damg-btn"
+         onclick="
+         location.href={% url 'report_damage' %}
+        ">
+          Report&nbsp;Damage
+        </button>
+      </div>
+    </div>
+    
+    <div class="filter" id="filterBar">
+      <!-- 
+        <div class="options">
+          <div>
+            <label><input type="checkbox" name="filter" value="name"> Name</label>
+            <label><input type="checkbox" name="filter" value="author"> Author</label>
+            <label><input type="checkbox" name="filter" value="genre"> Genre</label>
+          </div>
+          <div>
+            <p>Category:</p>
+            <label><input type="radio" name="category" value="educational"> Educational</label>
+            <label><input type="radio" name="category" value="fictional"> Fictional</label>
+            <label><input type="radio" name="category" value="informative"> Informative</label>
+          </div>
+        </div>
+      -->
+
+      <div></div> <!-- for alignment-->
+
+      <form method="GET" id="search-bar">
+        <input type="text"
+          placeholder="Search books..."
+          id="searchInput"
+          class="search-input" name="search"
+        >
+        <input type="submit" value="search" class="search-btn">
+      </form>
+      <div id="sort">🔃</div>
+    </div>
+
+    <div class="table-container">
+      <div class="all-books" id="books">
+        <table>
+
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Genre</th>
+              <th>Total Copies</th>
+              <th>Available Copies</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% if books %}
+              {% for b in books %}
+                <tr>
+                  {% if b.book_cover %}
+                    <td>{{ b.book_cover }}</td>
+                  {% else %}
+                    <td>N/A</td>
+                  {% endif %}
+                  <td>{{ b.title }}</td>
+                  <td>{{ b.author }}</td>
+                  <td>{{ b.category }}</td>
+                  <td>{{ b.genre }}</td>
+                  <td>{{ b.copies }}</td>
+                  <td>{{ b.available_copies }}</td>
+                  <td style="background-color: lightgreen; cursor: pointer;">
+                    <a href={% url 'edit_book' b.id %}
+                      style="text-decoration: none; color: inherit;"
+                    >Edit</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="8" style="text-align:center; padding:15px; font-weight:600; color:#555;">
+                  No book available
+                </td>
+              </tr>
+            {% endif %}
+            
+          </tbody>
+            
+        </table>
+      </div>
+      <div class="book-location" id="location">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Section</th>
+              <th>Shelf</th>
+              <th>Row</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {% if books %}
+
+              {% for b in books %}
+
+                <tr>
+                  <td>{{ b.title }}</td>
+                  <td>{{ b.category }}</td>
+                  <td>{{ b.section }}</td>
+                  <td>{{ b.shelf }}</td>
+                  <td>{{ b.row }}</td>
+                  <td>Edit</td>
+                </tr>
+
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="6" style="text-align:center; padding:15px; font-weight:600; color:#555;">
+                  No Books Available
+                </td>
+              </tr>
+            {% endif %}
+
+          </tbody>
+        </table>
+      </div>
+      <div class="borrowed-books" id="borrowed">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Borrower Name</th>
+              <th>Borrow Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if borrowed %}
+
+              {% for b in borrowed %}
+
+                <tr>
+                  <td>{{ b.book.title }}</td>
+                  <td>{{ b.book.category }}</td>
+                  <td>{{ b.borrower_name }}</td>
+                  <td>{{ b.borrowed_at }}</td>
+                  <td>{{ b.due_date }}</td>
+                  <td>{{ b.status }}</td>
+                  <td style="background-color: cyan; cursor: pointer;">
+                    <a href={% url 'return_book' b.id %}
+                      style="text-decoration: none; color: inherit;"
+                  >Return</a>
+                  </td>
+                </tr>
+
+              {% endfor %}
+            {% else %}
+
+              <tr>
+                <td colspan="7" style="text-align:center; padding:15px; font-weight:600; color:#555;">
+                  No Borrowed Book Yet
+                </td>
+              </tr>
+
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      <div class="damaged-books" id="damaged">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Category</th>
+              <th>Reported By</th>
+              <th>Damage Type</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if damaged %}
+
+              {% for d in damaged %}
+              
+            
+                <tr>
+                  <td>{{ d.book.title }}</td>
+                  <td>{{ d.book.category }}</td>
+                  <td>{{ d.book.genre }}</td>
+                  <td>{{ d.reported_by }}</td>
+                  <td>{{ d.damage_type }}</td>
+                  <td>{{ d.description }}</td>
+                  <td>Pending</td>
+                </tr>
+                
+                {% endfor %}
+            {% else %}
+
+              <tr>
+                <td colspan="7" style="text-align:center; padding:15px; font-weight:600; color:#555;">
+                  No Damaged book
+                </td>
+              </tr>
+
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- <div class="pagination">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+    </div> -->
+
+
+
+  </main>
+
+  <script src={% static "/scripts/index.js" %}></script>
+
+</body>
+</html>
