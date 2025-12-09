@@ -77,8 +77,11 @@ def dashboard(request):
             Q( author__icontains=search_query ) |
             Q( genre__icontains=search_query )
         )
-    
-    initials = f"{request.user.first_name[0].upper()}{request.user.last_name[0].upper()}"
+        
+    if request.user.role == 'admin':
+        initials = request.user.username[0].upper()
+    else:
+        initials = f"{request.user.first_name[0].upper()}{request.user.last_name[0].upper()}"
      
     context = {
         "books": books,
