@@ -107,7 +107,13 @@
         >
         <input type="submit" value="search" class="search-btn">
       </form>
-      <div id="sort">🔃</div>
+      <div id="sort">
+				<a href="?sort={{ next_sort }}" class="btn btn-primary"
+					style="text-decoration: none;"
+				>
+					🔃
+				</a>
+			</div>
     </div>
 
     <div class="table-container">
@@ -132,7 +138,12 @@
               {% for b in books %}
                 <tr>
                   {% if b.book_cover %}
-                    <td>{{ b.book_cover }}</td>
+                    <td>
+											<img src="{{ b.book_cover.url }}"
+                        alt="{{b.title}} Book Cover"
+                        width="30px" height="auto" 
+                      >
+										</td>
                   {% else %}
                     <td>N/A</td>
                   {% endif %}
