@@ -70,6 +70,15 @@ def dashboard(request):
     borrowed = BorrowedBook.objects.all()
     damaged = DamagedBook.objects.all()
 
+    sort = request.GET.get( "sort", "asc" )  # default asc
+
+    if sort == "asc":
+        books = Book.objects.all().order_by( "title" )
+    else:
+        books = Book.objects.all().order_by( "-title" )
+
+    next_sort = "desc" if sort == "asc" else "asc"
+
     search_query = request.GET.get( 'search' )
     if search_query:
         books = books.filter(
@@ -88,6 +97,7 @@ def dashboard(request):
         "borrowed": borrowed,
         "damaged": damaged,
         "initials": initials,
+        "next_sort": next_sort,
     }
     
     return render(request, 'index.html', context)
@@ -207,5 +217,3 @@ def report_damage(request):
         return redirect( "dashboard" )
 
     return render( request, "damaged.html" )
-
-

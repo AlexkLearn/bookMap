@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add New Book</title>
+  <title>Edit Book</title>
 
   {% load static %}
 
@@ -15,9 +15,9 @@
 
   <div class="container py-5">
     <div class="form-wrapper mx-auto p-4 shadow-lg rounded">
-      <h1 class="text-center mb-4">Add New Book</h1>
+      <h1 class="text-center mb-4">Update book details</h1>
 
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
 
         {% csrf_token %}
 
@@ -48,13 +48,15 @@
 
           <div class="col-md-6">
             <label class="form-label">Category *</label>
-            <select class="form-select" name="category"
-              value="{{ book.category }}"
-            >
+            <select class="form-select" name="category">
               <option value="">Select category</option>
-              <option value="educational">Educational</option>
-              <option value="fiction">Fiction</option>
-              <option value="informative">Informative</option>
+              {% for value, label in book.CATEGORY_CHOICES %}
+								<option value="{{ value }}" 
+									{% if book.category == value %}selected{% endif %}
+								>
+									{{ label }}
+								</option>
+							{% endfor %}
             </select>
           </div>
 
@@ -74,10 +76,8 @@
           </div>
 
           <div class="col-md-6">
-            <label class="form-label">Section *</label>
-            <select class="form-select" name="section"
-              value="{{ book.section }}"
-            >
+            <label class="form-label" for="section">Section *</label>
+            <select class="form-select" name="section" id="section">
               <option value="">Select section</option>
               <option value="a">A</option>
               <option value="b">B</option>
@@ -104,9 +104,15 @@
 
           <div class="col-12">
             <label class="form-label">Cover Image</label>
-            <input type="file" class="form-control"
-              accept="image/*" name="cover"
-              />
+            {% if b.book_cover %}
+              <br> Existing Image: <br>
+              <img src="{{ b.book_cover.url }}" alt="{{b.title}} Book Cover" class="img-thumbnail mb-2" style="max-width: 150px;">
+              <br>
+            {% else %}
+              <br>
+              <span style="color: tomato;">No image uploaded.</span>
+            {% endif %}
+            <input type="file" name="cover" class="form-control">
           </div>
         </div>
 
