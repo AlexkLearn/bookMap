@@ -66,6 +66,7 @@ def visitor_view(request):
 # Read Book Instances
 @login_required
 def dashboard(request):
+    user = request.user
     books = Book.objects.all()
     borrowed = BorrowedBook.objects.all()
     damaged = DamagedBook.objects.all()
@@ -88,11 +89,12 @@ def dashboard(request):
         )
         
     if request.user.role == 'admin':
-        initials = request.user.username[0].upper()
+        initials = user.username[0].upper()
     else:
-        initials = f"{request.user.first_name[0].upper()}{request.user.last_name[0].upper()}"
+        initials = f"{user.first_name[0].upper()}{user.last_name[0].upper()}"
      
     context = {
+        "user": user,
         "books": books,
         "borrowed": borrowed,
         "damaged": damaged,
@@ -125,6 +127,14 @@ def add_book(request):
         return redirect('dashboard')
     
     return render(request, 'add_book.html')
+
+
+def delete_book(request, pk):
+    book = get_object_or_404(Book, id=pk)
+    book.delete()
+    
+    return redirect('dashboard')
+
 
 
 def borrow_book(request):

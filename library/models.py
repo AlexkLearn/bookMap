@@ -45,7 +45,7 @@ class Book(models.Model):
         return self.copies - borrowed_count - damaged_count
     
     def __str__( self ):
-        return f"Title: {self.title} | Author{self.author}"
+        return f"Title: {self.title} | Author: {self.author}"
 
 
 
@@ -75,7 +75,7 @@ class BorrowedBook(models.Model):
 class DamagedBook(models.Model):
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
     reported_by = models.TextField(max_length=50)
-    report_date = models.DateTimeField()
+    report_date = models.DateTimeField(default=now)
     
     DAMAGE_TYPE = (
         ("water_damage", "Water damage"),

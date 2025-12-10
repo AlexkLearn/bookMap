@@ -33,19 +33,35 @@
   <aside>
     <div class="icon" id="all-icon">
       <img src={% static "/icons/find_book.png" %} alt="All Books">
-      <p>All Books</p>
+      <p>
+				<a href="#books"
+					style="text-decoration: none; color: inherit;"
+				>All Books</a>
+			</p>
     </div>
     <div class="icon" id="locator">
       <img src={% static "/icons/book_location.png" %} alt="Book Location">
-      <p>Book Location</p>
+      <p>
+				<a href="#location"
+					style="text-decoration: none; color: inherit;"
+				>Book Location</a>
+			</p>
     </div>
     <div class="icon" id="borrowed-icon">
       <img src={% static "/icons/borrow_book.png" %} alt="Borrowed Books">
-      <p>Borrowed Books</p>
+      <p>
+				<a href="#borrowed"
+					style="text-decoration: none; color: inherit;"
+				>Borrowed Books</a>
+			</p>
     </div>
     <div class="icon" id="damaged-icon">
       <img src={% static "/icons/damaged_book.png" %} alt="Damaged Books">
-      <p>Damaged Books</p>
+      <p>
+				<a href="#damaged"
+					style="text-decoration: none; color: inherit;"
+				>Damaged Books</a>
+			</p>
     </div>
     <!-- <div class="icon" id="co-icon">
       <img src="https://via.placeholder.com/30" alt="Checkout">
@@ -117,6 +133,7 @@
     </div>
 
     <div class="table-container">
+			
       <div class="all-books" id="books">
         <table>
 
@@ -153,11 +170,26 @@
                   <td>{{ b.genre }}</td>
                   <td>{{ b.copies }}</td>
                   <td>{{ b.available_copies }}</td>
-                  <td style="background-color: lightgreen; cursor: pointer;">
-                    <a href={% url 'edit_book' b.id %}
-                      style="text-decoration: none; color: inherit;"
-                    >Edit</a>
-                  </td>
+									{% if user.role == 'admin' %}
+										<td>
+											<a href={% url 'edit_book' b.id %}
+												style="text-decoration: none; color: inherit;
+												background-color: lightgreen; padding: .35rem;
+												border-radius: .15rem; cursor: pointer;"
+											>Edit</a>
+											<a href={% url 'delete_book' b.id %}
+												style="text-decoration: none; color: inherit;
+												background-color: tomato; margin-left: .15rem;
+												padding: .25rem; border-radius: .15rem; cursor: pointer;"
+											>Delete</a>
+                  	</td>
+									{% else %}
+										<td style="background-color: lightgreen; cursor: pointer;">
+											<a href={% url 'edit_book' b.id %}
+												style="text-decoration: none; color: inherit;"
+											>Edit</a>
+										</td>
+									{% endif %}
                 </tr>
               {% endfor %}
             {% else %}
@@ -298,6 +330,7 @@
           </tbody>
         </table>
       </div>
+			
     </div>
 
     <!-- <div class="pagination">
